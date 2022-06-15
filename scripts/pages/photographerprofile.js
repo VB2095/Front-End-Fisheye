@@ -3,7 +3,7 @@ class Profile {
     this.$photographerWrapperProfile =
       document.querySelector(".photograph-header");
     this.$photographerMedia = document.querySelector(".photograph-content");
-    this.photographerApi = new PhotographerApi("/data/photographers.json");
+    this.photographerApi = new PhotographerApi("Front-End-Fisheye/data/photographers.json");
   }
 
   async main() {
