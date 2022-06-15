@@ -2,7 +2,7 @@
         constructor() {
           this.$photographerWrapper = document.querySelector(".photographer_section");
           this.$photographerWrapperProfile =document.querySelector(".photograph-header");
-          this.photographerApi = new PhotographerApi("Front-End-Fisheye/data/photographers.json");
+          this.photographerApi = new PhotographerApi("./data/photographers.json");
         }
       
         async main() {
