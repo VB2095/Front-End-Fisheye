@@ -62,34 +62,32 @@ setTimeout(function () {
      */
     loadImage(url) {
       this.url = null;
-      if(url.includes('.jpg')){
+      if (url.includes(".jpg")) {
+        const image = new Image();
+        const container = this.element.querySelector(".lightbox_container");
+        container.innerHTML = "";
 
-      const image = new Image();
-      const container = this.element.querySelector(".lightbox_container");
-      container.innerHTML = "";
+        image.onload = () => {
+          container.appendChild(image);
+          this.url = url;
+        };
+        image.src = url;
+      } else if (url.includes(".mp4")) {
+        const video = document.createElement("video");
+        const container = this.element.querySelector(".lightbox_container");
+        container.innerHTML = "";
 
-      image.onload = () => {
-        container.appendChild(image);
+        video.setAttribute("autoplay", true);
+        video.setAttribute("loop", true);
+        video.setAttribute("controls", true);
+
+        const source = document.createElement("source");
+        source.src = url;
+        source.type = "video/mp4";
+        video.appendChild(source);
+        container.appendChild(video);
         this.url = url;
-      };
-      image.src = url;
-    }else if(url.includes('.mp4')){
-      const video = document.createElement('video');
-      const container = this.element.querySelector(".lightbox_container");
-      container.innerHTML = "";
-
-      video.setAttribute('autoplay', true);
-      video.setAttribute('loop', true);
-      video.setAttribute('controls', true);
-
-      const source = document.createElement('source');
-      source.src = url;
-      source.type = 'video/mp4';
-      video.appendChild(source);
-      container.appendChild(video);
-      this.url = url;
-    }
-
+      }
     }
 
     /**
@@ -97,7 +95,7 @@ setTimeout(function () {
      */
     next(e) {
       e.preventDefault();
-      let i = this.images.findIndex(image => image === this.url);
+      let i = this.images.findIndex((image) => image === this.url);
       if (i === this.images.length - 1) {
         i = -1;
       }
@@ -109,7 +107,7 @@ setTimeout(function () {
      */
     prev(e) {
       e.preventDefault();
-      let i = this.images.findIndex(image => {
+      let i = this.images.findIndex((image) => {
         return image === this.url;
       });
       if (i === 0) {
@@ -148,6 +146,4 @@ setTimeout(function () {
   }
 
   Lightbox.init();
-
-  console.log("lightbox.js loaded");
 }, 1000);

@@ -17,11 +17,8 @@ class Profile {
         const TemplateMedia = new PhotographerMedia(media);
         this.$photographerMedia.appendChild(
           TemplateMedia.createPhotographerMedia()
-          
         );
       }
-
-      
 
       // return true;
     });
@@ -30,4 +27,3 @@ class Profile {
 
 const profile = new Profile();
 profile.main();
-console.log("mes medias sont chargés");
